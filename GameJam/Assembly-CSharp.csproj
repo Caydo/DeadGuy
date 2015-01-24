@@ -50,8 +50,13 @@
      <Compile Include="Assets\Scripts\entities\ActorAttack.cs" />
      <Compile Include="Assets\Scripts\entities\ActorInput.cs" />
      <Compile Include="Assets\Scripts\entities\ActorMovement.cs" />
+     <Compile Include="Assets\Scripts\entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
+     <Compile Include="Assets\Scripts\entities\World\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\entities\World\GameController.cs" />
+     <Compile Include="Assets\Scripts\entities\World\InteractableObject.cs" />
+     <Compile Include="Assets\Scripts\entities\World\LevelController.cs" />
      <Compile Include="Assets\Scripts\packages\invisibledrygoods\GivenWhenUnity\Given.cs" />
      <Compile Include="Assets\Scripts\packages\invisibledrygoods\GivenWhenUnity\RunsTests.cs" />
      <Compile Include="Assets\Scripts\packages\invisibledrygoods\GivenWhenUnity\Shouldly\Case.cs" />
