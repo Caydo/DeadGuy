@@ -4,7 +4,7 @@ using System;
 
 namespace Require
 {
-    public static class Require
+    public static class RequireExtensionMethods
     {
         public static T Require<T>(this Transform transform) where T : Component
         {
