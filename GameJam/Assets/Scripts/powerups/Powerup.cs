@@ -12,9 +12,18 @@ namespace Assets.Scripts.powerups
   public class Powerup
   {
     public int Value;
+    public Attribute Attribute;
     public void ModifyPower(Actor actor)
     {
-
+      switch(Attribute)
+      {
+        case Attribute.Damage:
+          actor.Attack += Value;
+          break;
+        case Attribute.Health:
+          actor.HP += Value;
+          break;
+      }
     }
   }
 }
