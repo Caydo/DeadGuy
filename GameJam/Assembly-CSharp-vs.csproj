@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\entities\ActorMovement.cs" />
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
-     <Compile Include="Assets\Scripts\powerups\Attack.cs" />
      <Compile Include="Assets\Scripts\powerups\Damage.cs" />
      <Compile Include="Assets\Scripts\powerups\Health.cs" />
      <Compile Include="Assets\Scripts\powerups\Powerup.cs" />

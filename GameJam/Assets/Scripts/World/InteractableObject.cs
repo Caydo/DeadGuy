@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Scripts.powerups;
 using System;
+using System.Collections.Generic;
 
 public class InteractableObject : MonoBehaviour 
 {
@@ -23,7 +24,7 @@ public class InteractableObject : MonoBehaviour
   public int TimesSeen = 0;
   public bool Passable = false;
   public bool forced = false;
-  public Powerup[] PowerUp;
+  public List<Powerup> PowerUp;
 
   // Use this for initialization
 	void Start () {

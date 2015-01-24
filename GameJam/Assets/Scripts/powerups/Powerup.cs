@@ -6,8 +6,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.powerups
 {
-  public abstract class Powerup:MonoBehaviour
+  public enum Attribute { Health, Damage}
+
+  [Serializable]
+  public class Powerup
   {
-    public abstract void ModifyPower(Actor actor);
+    public int Value;
+    public void ModifyPower(Actor actor)
+    {
+
+    }
   }
 }
