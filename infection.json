@@ -1,0 +1,10 @@
+{
+  "infect": "GameJam/Assets",
+  "with": {
+    "invisibledrygoods/RequireUnity": "HEAD",
+    "invisibledrygoods/GivenWhenUnity": "HEAD",
+    "invisibledrygoods/Points": "HEAD",
+    "invisibledrygoods/WaitForEvents": "HEAD",
+    "invisibledrygoods/Select": "HEAD"
+  }
+}
