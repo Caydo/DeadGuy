@@ -5,7 +5,8 @@ public class ActorMovement : MonoBehaviour
 {
   public bool IsPlayer;
   float forceAmount = 10;
-
+  
+  // Currently a good drag amount set for forceAmount of 10 is 6 on a 3D rigid body
   void Update()
   {
     if(IsPlayer)

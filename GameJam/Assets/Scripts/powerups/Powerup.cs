@@ -6,10 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.powerups
 {
-  public enum Attribute { Health, Damage}
-
-  [Serializable]
-  public class Powerup
+  public abstract class Powerup:MonoBehaviour
   {
     public int Value;
     public Attribute Attribute;

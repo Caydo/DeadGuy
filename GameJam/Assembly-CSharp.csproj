@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\entities\ActorAttack.cs" />
      <Compile Include="Assets\Scripts\entities\ActorInput.cs" />
      <Compile Include="Assets\Scripts\entities\ActorMovement.cs" />
+     <Compile Include="Assets\Scripts\entities\Bullet.cs" />
+     <Compile Include="Assets\Scripts\entities\BulletCollider.cs" />
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
      <Compile Include="Assets\Scripts\powerups\Powerup.cs" />
