@@ -4,29 +4,38 @@ using System.Collections;
 public class ActorMovement : MonoBehaviour
 {
   public bool IsPlayer;
-  
+  float forceAmount = 10;
+
   void Update()
   {
     if(IsPlayer)
     {
-      if(Input.GetKeyUp(KeyCode.UpArrow))
+      // go left
+      if(Input.GetAxis("Horizontal") < 0)
       {
-        // go up
+        Vector3 movementForce = new Vector3(-forceAmount, 0, 0);
+        rigidbody.AddForce(movementForce);
       }
-      
-      if(Input.GetKeyUp(KeyCode.DownArrow))
+
+      // go right
+      if(Input.GetAxis("Horizontal") > 0)
       {
-        // go down
+        Vector3 movementForce = new Vector3(forceAmount, 0, 0);
+        rigidbody.AddForce(movementForce);
       }
-      
-      if(Input.GetKeyUp(KeyCode.LeftArrow))
+
+      // go up
+      if(Input.GetAxis("Vertical") > 0)
       {
-        // go left
+        Vector3 movementForce = new Vector3(0, forceAmount, 0);
+        rigidbody.AddForce(movementForce);
       }
-      
-      if(Input.GetKeyUp(KeyCode.RightArrow))
+
+      // go down
+      if(Input.GetAxis("Vertical") < 0)
       {
-        // go right
+        Vector3 movementForce = new Vector3(0, -forceAmount, 0);
+        rigidbody.AddForce(movementForce);
       }
     }
     else
