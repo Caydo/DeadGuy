@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : Actor
+public class Player : MonoBehaviour
 {
+  // player specific stuff goes here
 }
