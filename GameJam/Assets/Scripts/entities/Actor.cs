@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Actor : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class Actor : MonoBehaviour
+{
+  public int HP;
+  public int Attack;
+  public int Defense;
+  public int AttackSpeed;
 }
