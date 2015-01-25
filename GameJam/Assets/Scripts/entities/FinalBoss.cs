@@ -3,5 +3,21 @@ using System.Collections;
 
 public class FinalBoss : MonoBehaviour
 {
-  // final boss specific stuff goes here
+  Actor actor;
+  bool gameWon = false;
+
+  void Start()
+  {
+    actor = GetComponent<Actor>();
+  }
+
+  void Update()
+  {
+    if(!gameWon && actor.IsDead())
+    {
+      gameWon = true;
+      // win game here!
+      GameObject.FindObjectOfType<GameController>().WinGame();
+    }
+  }
 }

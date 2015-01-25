@@ -18,4 +18,9 @@ public class GameController : MonoBehaviour {
 	void Update () {
 	  
 	}
+
+  public void WinGame()
+  {
+    // WIN HERE!!! ZOMG YOU WON GO YOU, A WINNER IS YOU!!
+  }
 }
