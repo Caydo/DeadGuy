@@ -6,7 +6,7 @@ public class BulletCollider : MonoBehaviour
   public Actor SourceActor;
   public string EnemyTag;
   
-  void OnColliderEnter(Collider objectThatCollided)
+  void OnTriggerEnter(Collider objectThatCollided)
   {
     if (objectThatCollided.gameObject.tag == EnemyTag)
     {
