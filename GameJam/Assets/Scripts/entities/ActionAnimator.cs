@@ -29,18 +29,17 @@ namespace AssemblyCSharp
 				walkThisFrame = true;
 			}
 
-            anim.SetBool("Attacking", attacking);
-            anim.SetBool("Walking", walkThisFrame);
-            anim.SetBool("Dead", dead);
+			if (enabled) {
+								anim.SetBool ("Attacking", attacking);
+								anim.SetBool ("Walking", walkThisFrame);
+								anim.SetBool ("Dead", dead);
 
-            if (transform.position.x > oldPosition.x)
-            {
-                anim.SetBool("FacingRight", true);
-            }
-            else if (transform.position.x < oldPosition.x)
-            {
-                anim.SetBool("FacingRight", false);
-            }
+								if (transform.position.x > oldPosition.x) {
+										anim.SetBool ("FacingRight", true);
+								} else if (transform.position.x < oldPosition.x) {
+										anim.SetBool ("FacingRight", false);
+								}
+						}
 
             oldPosition = transform.position;
         }
