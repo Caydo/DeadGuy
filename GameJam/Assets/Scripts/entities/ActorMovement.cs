@@ -34,6 +34,11 @@ public class ActorMovement : MonoBehaviour
     {
       Vector3 movementForce = new Vector3(0, -forceAmount, 0);
       rigidbody.AddForce(movementForce);
-    }
+    }	
+   
+	if(rigidbody.velocity != Vector3.zero)
+	{
+	  transform.rotation = Quaternion.LookRotation(rigidbody.velocity);
+	}
   }
 }
