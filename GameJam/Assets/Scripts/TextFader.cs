@@ -8,6 +8,7 @@ public class TextFader : MonoBehaviour
   
   float AlphaAmount = 0.03f;
   public Text currentText;
+  public bool Done = false;
   float cachedAlpha = 0;
   Color startingColor;
 
@@ -23,6 +24,7 @@ public class TextFader : MonoBehaviour
 
   public IEnumerator FadeIn()
   {
+    Done = false;
     while(currentText.color.a < 1)
     {
       cachedAlpha += AlphaAmount;
@@ -30,10 +32,12 @@ public class TextFader : MonoBehaviour
       currentText.color = newAlpha;
       yield return null;
     }
+    Done = true;
   }
   
   public IEnumerator FadeOut()
   {
+    Done = false;
     while(currentText.color.a > 0)
     {
       cachedAlpha -= AlphaAmount;
@@ -41,5 +45,6 @@ public class TextFader : MonoBehaviour
       currentText.color = newAlpha;
       yield return null;
     }
+    Done = true;
   }
 }
