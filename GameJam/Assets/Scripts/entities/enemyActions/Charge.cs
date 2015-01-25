@@ -7,6 +7,7 @@ public class Charge : MonoBehaviour {
 
     RandomAI ai;
     Transform player;
+	float awakeTime;
 
     void Awake() {
         ai = transform.GetComponentInParent<RandomAI>();
@@ -14,16 +15,14 @@ public class Charge : MonoBehaviour {
     }
 
     void OnEnable() {
-        StartCoroutine(NextAfterTimeout());
-    }
-
-	void Update() {
-        Vector3 towards = player.position - transform.position;
-        rigidbody.AddForce(towards.normalized * speed);
+		awakeTime = Time.time;
 	}
-
-    IEnumerator NextAfterTimeout() {
-        yield return new WaitForSeconds(duration);
-		ai.DoSomethingRandom();
-    }
+	
+	void Update() {
+		if (Time.time > awakeTime + duration) {
+			ai.DoSomethingRandom();
+		}
+        Vector3 towards = player.position - transform.position;
+        ai.rigidbody.AddForce(towards.normalized * speed);
+	}
 }
