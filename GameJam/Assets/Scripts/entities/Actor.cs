@@ -6,7 +6,8 @@ public class Actor : MonoBehaviour
   public int HP;
   public int Attack;
   public int Defense;
-  public int AttackSpeed;
+  public float MeleeAttackSpeed;
+  public float RangedAttackSpeed;
   public bool IsPlayer;
 
   public bool IsDead()
