@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.powerups
 {
-  public enum ActorAttribute { Health, Damage }
+  public enum ActorAttribute { Health, Damage, Horcrux }
   [Serializable]
   public class Powerup
   {
@@ -21,6 +21,9 @@ namespace Assets.Scripts.powerups
           break;
         case ActorAttribute.Health:
           actor.HP += Value;
+          break;
+        case ActorAttribute.Horcrux:
+          ++actor.GetComponent<Player>().HorcruxCount;
           break;
       }
     }

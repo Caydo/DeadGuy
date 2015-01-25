@@ -36,19 +36,24 @@ public class EnemySpawner : MonoBehaviour {
       spawning = true;
     }
   }
-
+  List<Actor> remove = new List<Actor>();
   void Update()
   {
-    //clean up enemies
-    for (int i = spawnedEnemies.Count; i > 0; --i)
+    remove.Clear();
+    foreach(var enemy in spawnedEnemies)
     {
-      if (spawnedEnemies[i].IsDead())
+      if (enemy.IsDead())
       {
         ++dead;
         --inPlay;
-        spawnedEnemies.RemoveAt(i);
+        remove.Add(enemy);
       }
     }
+    foreach(var enemey in remove)
+    {
+      spawnedEnemies.Remove(enemey);
+    }
+
     if (spawning)
     {
       if (dead < Enemies.Length)

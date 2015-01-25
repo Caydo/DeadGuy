@@ -11,6 +11,7 @@ namespace Assets.Scripts.World
   {
     public int ExitLevel;
     public bool Exiting = false;
+    public GameObject SpawnPoint;
 
     void OnTriggerEnter()
     {

@@ -3,6 +3,14 @@ using System.Collections;
 
 public class MenuButton : MonoBehaviour
 {
+  public TextMesh Text;
+  public string TextForButton;
+
+  void Start()
+  {
+    Text.text = TextForButton;
+  }
+
   void OnMouseUp()
   {
     doAction();

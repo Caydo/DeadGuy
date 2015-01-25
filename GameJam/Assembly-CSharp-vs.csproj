@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\DeleteAfterTimeout.cs" />
      <Compile Include="Assets\Scripts\World\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\World\GameController.cs" />
      <Compile Include="Assets\Scripts\World\InteractableObject.cs" />
@@ -58,12 +59,16 @@
      <Compile Include="Assets\Scripts\entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\entities\BulletCollider.cs" />
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
+     <Compile Include="Assets\Scripts\entities\HUDElement.cs" />
+     <Compile Include="Assets\Scripts\entities\HorcruxHUD.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Attack.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Charge.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\RandomAI.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Strafe.cs" />
      <Compile Include="Assets\Scripts\menu\CreditsButton.cs" />
+     <Compile Include="Assets\Scripts\menu\CreditsTextDisplayButton.cs" />
+     <Compile Include="Assets\Scripts\menu\GameOverButton.cs" />
      <Compile Include="Assets\Scripts\menu\MenuButton.cs" />
      <Compile Include="Assets\Scripts\menu\PlayGameButton.cs" />
      <Compile Include="Assets\Scripts\menu\QuitGameButton.cs" />

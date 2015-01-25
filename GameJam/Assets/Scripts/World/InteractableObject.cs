@@ -27,7 +27,7 @@ public class InteractableObject : MonoBehaviour
   public string Name;
   public bool Passable = false;
   public bool Forced = false;
-  public Powerup[] PowerUp;
+  public Powerup[] PowerUps;
 
   [SerializeField]
   string[] Phrases;
@@ -55,11 +55,11 @@ public class InteractableObject : MonoBehaviour
 
   void OnTriggerExit()
   {
-    ++TimesSeen;
+    
     IsUsable = false;
   }
 
-  public string GetPhrase()
+  public string Interact(Actor actor)
   {
     string retVal = string.Empty;
     if (IsUsable)
@@ -68,6 +68,17 @@ public class InteractableObject : MonoBehaviour
         retVal = Phrases[TimesSeen];
       else
         retVal = ShortPhrase;
+
+      if(!Used)
+      {
+        foreach(var powerup in PowerUps)
+        {
+          powerup.ModifyPower(actor);
+        }
+      }
+
+      ++TimesSeen;
+      Used = true;
     }
     return retVal;
   }
