@@ -55,7 +55,7 @@ public class InteractableObject : MonoBehaviour
 
   void OnTriggerExit()
   {
-    ++TimesSeen;
+    
     IsUsable = false;
   }
 
@@ -64,6 +64,7 @@ public class InteractableObject : MonoBehaviour
     string retVal = string.Empty;
     if (IsUsable)
     {
+      ++TimesSeen;
       if (TimesSeen < Phrases.Length)
         retVal = Phrases[TimesSeen];
       else

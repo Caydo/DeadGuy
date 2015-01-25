@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour {
   public List<LevelController> levels;
   public int CurrentLevel = 0;
   public GameObject Player;
-  bool changeLevel = false;
 	
 	// Update is called once per frame
 	void Update () 
@@ -15,6 +14,7 @@ public class GameController : MonoBehaviour {
 	  if(levels[CurrentLevel].LevelComplete && levels[CurrentLevel].Exiting)
     {
       var exit = levels[CurrentLevel].Exit;
+      exit.Exiting = false;
       levels[CurrentLevel].Exit = null;
       levels[CurrentLevel].gameObject.SetActive(false);
       CurrentLevel = exit.ExitLevel;
