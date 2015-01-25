@@ -27,7 +27,7 @@ public class ActorAttack : MonoBehaviour
       {
         Vector3 mousePositionInWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 playerPositionInWorldPoint = Camera.main.ScreenToWorldPoint(gameObject.transform.position);
-        Vector3 moveToPos = new Vector3(mousePositionInWorldPoint.x, mousePositionInWorldPoint.y, playerPositionInWorldPoint.z);
+        Vector3 moveToPos = new Vector3(mousePositionInWorldPoint.x, mousePositionInWorldPoint.y, 0);
         moveToPos = Vector3.MoveTowards(gameObject.transform.position, moveToPos, MeleeAttackDistance);
 
         attackBullet = GameObject.Instantiate(AttackOneBullet, moveToPos, Quaternion.identity) as Bullet;
