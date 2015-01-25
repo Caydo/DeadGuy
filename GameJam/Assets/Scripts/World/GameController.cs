@@ -29,6 +29,6 @@ public class GameController : MonoBehaviour {
 
   public void WinGame()
   {
-    // WIN HERE!!! ZOMG YOU WON GO YOU, A WINNER IS YOU!!
+    Application.LoadLevel("StoryEnd");
   }
 }

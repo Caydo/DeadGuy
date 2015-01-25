@@ -16,7 +16,6 @@ public class FinalBoss : MonoBehaviour
     if(!gameWon && actor.IsDead())
     {
       gameWon = true;
-      // win game here!
       GameObject.FindObjectOfType<GameController>().WinGame();
     }
   }
