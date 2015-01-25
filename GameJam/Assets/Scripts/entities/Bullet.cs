@@ -32,11 +32,8 @@ public class Bullet : MonoBehaviour
   {
     while(SourceActor == null)
     {
-      Debug.Log("source actor is null");
       yield return null;
     }
-
-    Debug.Log("doing other cool stuff");
 
     bulletCollider = BulletColliderGO.GetComponent<BulletCollider>();
     bulletCollider.SourceActor = SourceActor;
