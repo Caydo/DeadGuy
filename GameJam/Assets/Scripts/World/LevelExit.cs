@@ -13,9 +13,13 @@ namespace Assets.Scripts.World
     public bool Exiting = false;
     public GameObject SpawnPoint;
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider obj)
     {
-      Exiting = true;
+      var player = obj.GetComponent<Player>();
+      if (player != null)
+      {
+        Exiting = true;
+      }
     }
 
     void OnTriggerExit()
