@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MenuButton : MonoBehaviour
 {
-  public TextMesh Text;
+  public Text UIText;
   public string TextForButton;
 
-  void Start()
+  protected virtual void Start()
   {
-    Text.text = TextForButton;
+    UIText.text = TextForButton;
   }
 
-  void OnMouseUp()
+  public void Clicked()
   {
     doAction();
   }
