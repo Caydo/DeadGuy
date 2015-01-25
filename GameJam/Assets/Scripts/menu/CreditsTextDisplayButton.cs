@@ -6,15 +6,24 @@ public class CreditsTextDisplayButton : MenuButton
 {
   void Awake()
   {
-    TextForButton = "Credits:\n\nKennan - Art\n\nKaitlyn - Programming/Art\n\nLewis - Programming\n\nJoe - Programming\n\nShad - Art/Programming";
+    TextForButton = "Credits:\n\nKenan Jackson - Art\nKaitlyn Culley - Programming/Art\nLewis Broerman - Programming\nJoseph Smits - Programming\nShad Tischer - Programming/Art\n\nClick To Continue";
+    TextForButton2 = "Audio Special Thanks:\n\nMike Koenig\nCGeffex\nNeoPhyTe\nMark DiAngelo\nSoundBible.com\n\nClick To Continue";
   }
 
+  public string TextForButton2;
   public ImageFader CurrentImageFader;
   public TextFader CurrentTextFader;
   public ImageFader[] ImageFaders;
   public TextFader[] TextFaders;
   RectTransform rectTransform;
   Image currentImage;
+  bool shownAudio = false;
+
+  public void SetInitialCreditsText()
+  {
+    shownAudio = false;
+    UIText.text = TextForButton;
+  }
 
   protected override void Start()
   {
@@ -25,10 +34,18 @@ public class CreditsTextDisplayButton : MenuButton
 
   protected override void doAction()
   {
-    StartCoroutine(CurrentImageFader.FadeOut());
-    StartCoroutine(CurrentTextFader.FadeOut());
+    if(shownAudio)
+    {
+      StartCoroutine(CurrentImageFader.FadeOut());
+      StartCoroutine(CurrentTextFader.FadeOut());
 
-    StartCoroutine(waitforFadeThenMove());
+      StartCoroutine(waitforFadeThenMove());
+    }
+    else
+    {
+      UIText.text = TextForButton2;
+      shownAudio = true;
+    }
   }
 
   IEnumerator waitforFadeThenMove()
@@ -37,7 +54,7 @@ public class CreditsTextDisplayButton : MenuButton
     {
       yield return null;
     }
-
+    
     foreach(ImageFader imageFader in ImageFaders)
     {
        StartCoroutine(imageFader.FadeIn());

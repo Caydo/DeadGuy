@@ -23,6 +23,7 @@ public class CreditsButton : MenuButton
       StartCoroutine(textFader.FadeOut());
     }
 
+    CreditsText.GetComponent<CreditsTextDisplayButton>().SetInitialCreditsText();
     CreditsText.localPosition = new Vector3(0, -2, 0);
 
     StartCoroutine(CreditsImageFader.FadeIn());
