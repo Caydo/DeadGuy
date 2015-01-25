@@ -58,9 +58,10 @@
      <Compile Include="Assets\Scripts\entities\BulletCollider.cs" />
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
-     <Compile Include="Assets\Scripts\powerups\Attack.cs" />
-     <Compile Include="Assets\Scripts\powerups\Damage.cs" />
-     <Compile Include="Assets\Scripts\powerups\Health.cs" />
+     <Compile Include="Assets\Scripts\entities\enemyActions\Attack.cs" />
+     <Compile Include="Assets\Scripts\entities\enemyActions\Charge.cs" />
+     <Compile Include="Assets\Scripts\entities\enemyActions\RandomAI.cs" />
+     <Compile Include="Assets\Scripts\entities\enemyActions\Strafe.cs" />
      <Compile Include="Assets\Scripts\powerups\Powerup.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

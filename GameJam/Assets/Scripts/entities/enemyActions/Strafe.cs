@@ -5,23 +5,25 @@ public class Strafe : MonoBehaviour {
     public float speed = 10.0f;
     public float duration;
 
-    Transform player;
-
-    void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player");
+	RandomAI ai;
+	Transform player;
+	
+	void Awake() {
+		ai = transform.GetComponentInParent<RandomAI>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void OnEnable() {
-        StartCoroutine(NextAfterTimeout);
+        StartCoroutine(NextAfterTimeout());
     }
 
-	void Update () {
+	void Update() {
         Vector3 towards = player.position - transform.position;
         rigidbody.AddForce(Vector3.Cross(towards, Vector3.up).normalized * speed);
 	}
 
-    IEnumerable NextAfterTimeout() {
-        yield return WaitForSeconds(duration);
-        transform.GetComponentInParent<RandomAI>().DoSomethingRandom();
+    IEnumerator NextAfterTimeout() {
+        yield return new WaitForSeconds(duration);
+        ai.DoSomethingRandom();
     }
 }

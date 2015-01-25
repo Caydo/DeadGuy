@@ -13,31 +13,26 @@ public class Attack : MonoBehaviour {
     bool melee = false;
     
     void Awake() {
-        ai = transform.GetComponentInParent<RandomAI>().DoSomethingRandom();
-        player = GameObject.FindGameObjectWithTag("Player");
+        ai = transform.GetComponentInParent<RandomAI>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     
     void OnEnable() {
         melee = Vector3.Distance(player.position, transform.position) < meleeRange;
-        StartCoroutine(NextAfterTimeout);
-        StartCoroutine(RunAttacks);
-    }
-        
-    void Update() {
-        Vector3 towards = player.position - transform.position;
-        rigidbody.AddForce(towards.normalized * speed);
+        StartCoroutine(NextAfterTimeout());
+        StartCoroutine(RunAttacks());
     }
     
-    IEnumerable NextAfterTimeout() {
-        yield return WaitForSeconds(duration);
-        transform.GetComponentInParent<RandomAI>().DoSomethingRandom();
+    IEnumerator NextAfterTimeout() {
+        yield return new WaitForSeconds(duration);
+        ai.DoSomethingRandom();
     }
 
-    IEnumerable RunAttacks() {
+    IEnumerator RunAttacks() {
         while (true) {
             Vector3 bulletSpawnPosition = transform.position + (transform.position - player.position).normalized;
 
-            Bullet toSpawn = null;
+            Transform toSpawn = null;
             if (melee) {
                 ai.animator.SetBool("Melee", true);
                 toSpawn = meleePrefab.transform;
@@ -49,7 +44,7 @@ public class Attack : MonoBehaviour {
             Bullet bullet = (Instantiate(toSpawn, bulletSpawnPosition, Quaternion.LookRotation(bulletSpawnPosition)) as Transform).GetComponent<Bullet>();
             bullet.SourceActor = ai.actor;
 
-            yield return WaitForSeconds(secondsBetweenAttacks);
+            yield return new WaitForSeconds(secondsBetweenAttacks);
         }
     }
 }
