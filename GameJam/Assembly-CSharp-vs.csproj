@@ -62,6 +62,10 @@
      <Compile Include="Assets\Scripts\entities\enemyActions\Charge.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\RandomAI.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Strafe.cs" />
+     <Compile Include="Assets\Scripts\menu\CreditsButton.cs" />
+     <Compile Include="Assets\Scripts\menu\MenuButton.cs" />
+     <Compile Include="Assets\Scripts\menu\PlayGameButton.cs" />
+     <Compile Include="Assets\Scripts\menu\QuitGameButton.cs" />
      <Compile Include="Assets\Scripts\powerups\Powerup.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
