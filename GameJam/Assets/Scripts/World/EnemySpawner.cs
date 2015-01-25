@@ -10,7 +10,9 @@ public class EnemySpawner : MonoBehaviour {
   public int MaxInPlay = 1;
   public float SequentialDelay = 0.0f;
   [NonSerialized]
-  public bool HasSpawned;
+  public bool HasSpawned = false;
+  [NonSerialized]
+  public bool AllDead = false;
 
   int dead = 0;
   int inPlay = 0;
@@ -38,7 +40,7 @@ public class EnemySpawner : MonoBehaviour {
   void Update()
   {
     //clean up enemies
-    for (int i = spawnedEnemies.Count; i >= 0; --i)
+    for (int i = spawnedEnemies.Count; i > 0; --i)
     {
       if (spawnedEnemies[i].IsDead())
       {
@@ -63,6 +65,7 @@ public class EnemySpawner : MonoBehaviour {
     {
       gameObject.SetActive(false);
       spawning = false;
+      AllDead = true;
     }
   }
 

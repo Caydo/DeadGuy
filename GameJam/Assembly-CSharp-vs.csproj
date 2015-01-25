@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\World\GameController.cs" />
      <Compile Include="Assets\Scripts\World\InteractableObject.cs" />
      <Compile Include="Assets\Scripts\World\LevelController.cs" />
+     <Compile Include="Assets\Scripts\World\LevelExit.cs" />
      <Compile Include="Assets\Scripts\entities\Actor.cs" />
      <Compile Include="Assets\Scripts\entities\ActorAttack.cs" />
      <Compile Include="Assets\Scripts\entities\ActorInput.cs" />
