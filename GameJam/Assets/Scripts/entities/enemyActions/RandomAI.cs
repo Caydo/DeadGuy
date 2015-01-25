@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using AssemblyCSharp;
 
 public class RandomAI : MonoBehaviour {
     public Actor actor;
-    public Animator animator;
+    public ActionAnimator animator;
 
     void Awake() {
         DoSomethingRandom();
