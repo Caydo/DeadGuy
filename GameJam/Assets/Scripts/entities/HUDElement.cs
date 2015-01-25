@@ -7,7 +7,9 @@ public class HUDElement : MonoBehaviour
   public Actor PlayerActor;
   public Player Player;
   public int ElementNumber;
-  public Image Sprite;
+  public Sprite EnabledSprite;
+  public Sprite DisabledSprite;
+  public Image CurrentSprite;
   public bool IsHeart;
   bool activeElement;
 
@@ -23,6 +25,6 @@ public class HUDElement : MonoBehaviour
       activeElement = (Player.HorcruxCount >= ElementNumber);
     }
 
-    Sprite.enabled = activeElement;
+    CurrentSprite.sprite = (activeElement) ? EnabledSprite : DisabledSprite;
 	}
 }
