@@ -9,20 +9,21 @@ public class Charge : MonoBehaviour {
     Transform player;
 
     void Awake() {
-        ai = transform.GetComponentInParent<RandomAI>().DoSomethingRandom();
-        player = GameObject.FindGameObjectWithTag("Player");
+        ai = transform.GetComponentInParent<RandomAI>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void OnEnable() {
-        StartCoroutine(NextAfterTimeout);
+        StartCoroutine(NextAfterTimeout());
     }
 
-	void Update () {
+	void Update() {
         Vector3 towards = player.position - transform.position;
         rigidbody.AddForce(towards.normalized * speed);
 	}
 
-    IEnumerable NextAfterTimeout() {
-        yield return WaitForSeconds(duration);
+    IEnumerator NextAfterTimeout() {
+        yield return new WaitForSeconds(duration);
+		ai.DoSomethingRandom();
     }
 }
