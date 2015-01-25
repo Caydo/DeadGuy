@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour {
   [NonSerialized]
   public bool AllDead = false;
 
+  public bool IsBoss = false;
+
   int dead = 0;
   int inPlay = 0;
   int spawned = 0;
@@ -66,9 +68,10 @@ public class EnemySpawner : MonoBehaviour {
       }
     }
 
-    if (dead == Enemies.Length)
+    if (dead >= Enemies.Length)
     {
-      gameObject.SetActive(false);
+      if (!IsBoss)
+        gameObject.SetActive(false);
       spawning = false;
       AllDead = true;
     }
@@ -78,7 +81,7 @@ public class EnemySpawner : MonoBehaviour {
   {
     var retVal = Enemies[spawned];
     spawnedEnemies.Add(retVal);
-    ++spawned;
+    spawned = Math.Min(Enemies.Length - 1, spawned + 1);
     ++inPlay;
     return retVal;
   }

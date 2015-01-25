@@ -4,7 +4,6 @@ using System.Collections;
 public class FinalBoss : MonoBehaviour
 {
   Actor actor;
-  bool gameWon = false;
 
   void Start()
   {
@@ -13,9 +12,8 @@ public class FinalBoss : MonoBehaviour
 
   void Update()
   {
-    if(!gameWon && actor.IsDead())
+    if( actor.IsDead())
     {
-      gameWon = true;
       GameObject.FindObjectOfType<GameController>().WinGame();
     }
   }

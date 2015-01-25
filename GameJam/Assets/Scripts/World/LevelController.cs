@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
   public LevelExit Exit;
   public int ExitTo;
   List<LevelExit> exits;
+  Player player;
 
   public bool Exiting
   {
@@ -24,6 +25,7 @@ public class LevelController : MonoBehaviour
   void Start()
   {
     exits = GetComponentsInChildren<LevelExit>().ToList();
+    player = GameObject.FindObjectOfType<Player>();
   }
 
 	// Update is called once per frame
@@ -42,9 +44,29 @@ public class LevelController : MonoBehaviour
     {
       if (spawn.Interactable.Used && !spawn.Spawner.HasSpawned)
       {
-        spawn.Spawner.Spawn();
+        Debug.Log(string.Format("isboss [{0}] count [{1}]", spawn.Spawner.IsBoss, player.HorcruxCount));
+        if (!spawn.Spawner.IsBoss || (spawn.Spawner.IsBoss && player.HorcruxCount >= 4))
+        {
+          spawn.Spawner.Spawn();
+        }
       }
     }
+
+    //foreach(var thing in ObjectSpawnPairs)
+    //{
+    //  if(!thing.Required)
+    //  {
+    //    continue;
+    //  }
+    //  else if(thing.Interactable.Used && thing.Spawner.AllDead)
+    //  {
+    //    LevelComplete = true;
+    //  }
+    //  else
+    //  {
+
+    //  }
+    //}
 
     if (ObjectSpawnPairs.All(pair => !pair.Required || (pair.Required && pair.Interactable.Used && pair.Spawner != null && pair.Spawner.AllDead)))
     {

@@ -38,7 +38,9 @@ public class ActorMovement : MonoBehaviour
 
     if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
     {
-      rigidbody.velocity = Vector3.zero; ;
+      rigidbody.velocity = Vector3.zero;
+      rigidbody.angularVelocity = Vector3.zero;
+      
     }
    
 	if(rigidbody.velocity != Vector3.zero)

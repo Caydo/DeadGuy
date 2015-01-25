@@ -9,6 +9,7 @@ public class Actor : MonoBehaviour
   public float MeleeAttackSpeed;
   public float RangedAttackSpeed;
   public bool IsPlayer;
+  public bool IsBoss;
 
   public bool IsDead()
   {
@@ -22,6 +23,10 @@ public class Actor : MonoBehaviour
       if(IsPlayer)
       {
         Application.LoadLevel("GameOver");
+      }
+      else if (IsBoss)
+      {
+        Application.LoadLevel("StoryEnd");
       }
       else
       {
