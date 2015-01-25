@@ -8,4 +8,9 @@ public class Actor : MonoBehaviour
   public int Defense;
   public int AttackSpeed;
   public bool IsPlayer;
+
+  public bool IsDead()
+  {
+    return HP <= 0;
+  }
 }

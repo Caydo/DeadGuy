@@ -37,20 +37,25 @@ public class EnemySpawner : MonoBehaviour {
     //clean up enemies
     foreach(var enemy in Enemies)
     {
-      if(enemy.HP <= 0)
+      if(enemy.IsDead())
       {
-
+        ++dead;
+        --inPlay;
       }
     }
-
-    if(dead < Enemies.Length)
+    if (spawning)
     {
-      if(inPlay < MaxInPlay)
+      if (dead < Enemies.Length)
       {
-        var enemy = getNextEnemy();
+        if (inPlay < MaxInPlay)
+        {
+          var enemy = getNextEnemy();
+        }
       }
-
     }
+
+    if (dead == Enemies.Length)
+      gameObject.SetActive(false);
   }
 
   private Actor getNextEnemy()

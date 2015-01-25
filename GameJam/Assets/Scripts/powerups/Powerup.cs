@@ -6,18 +6,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.powerups
 {
-  public abstract class Powerup:MonoBehaviour
+  public enum ActorAttribute { Health, Damage }
+
+  public class Powerup
   {
     public int Value;
-    public Attribute Attribute;
+    public ActorAttribute Attribute;
     public void ModifyPower(Actor actor)
     {
-      switch(Attribute)
+      switch (Attribute)
       {
-        case Attribute.Damage:
+        case ActorAttribute.Damage:
           actor.Attack += Value;
           break;
-        case Attribute.Health:
+        case ActorAttribute.Health:
           actor.HP += Value;
           break;
       }
