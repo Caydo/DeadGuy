@@ -3,8 +3,11 @@ using System.Collections;
 
 public class CreditsButton : MenuButton
 {
+  public GameObject CreditsText;
+  public GameObject Buttons;
   protected override void doAction()
   {
- 	  Debug.Log("SHOW CREDITS HERE");
+    CreditsText.SetActive(true);
+    Buttons.SetActive(false);
   }
 }

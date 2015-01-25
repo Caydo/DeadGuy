@@ -64,6 +64,8 @@
      <Compile Include="Assets\Scripts\entities\enemyActions\RandomAI.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Strafe.cs" />
      <Compile Include="Assets\Scripts\menu\CreditsButton.cs" />
+     <Compile Include="Assets\Scripts\menu\CreditsTextDisplayButton.cs" />
+     <Compile Include="Assets\Scripts\menu\GameOverButton.cs" />
      <Compile Include="Assets\Scripts\menu\MenuButton.cs" />
      <Compile Include="Assets\Scripts\menu\PlayGameButton.cs" />
      <Compile Include="Assets\Scripts\menu\QuitGameButton.cs" />
