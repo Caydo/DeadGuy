@@ -6,7 +6,7 @@ public class CreditsTextDisplayButton : MenuButton
 {
   void Awake()
   {
-    TextForButton = "Credits:\n\nKenan Jackson - Art\nKaitlyn Culley - Programming/Art\nLewis Broerman - Programming\nJoseph Smits - Programming\nShad Tischer - Programming/Art\n\nClick To Continue";
+    TextForButton = "Credits:\n\nKenan Jackson - Art Director\nKaitlyn Culley - Programming/Art\nLewis Broerman - Programming\nJoseph Smits - Programming\nShad Tischer - Programming/Art\n\nClick To Continue";
     TextForButton2 = "Audio Special Thanks:\n\nMike Koenig\nCGeffex\nNeoPhyTe\nMark DiAngelo\nSoundBible.com\n\nClick To Continue";
   }
 
