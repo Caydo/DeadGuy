@@ -4,14 +4,22 @@ using UnityEngine.UI;
 
 public class HUDElement : MonoBehaviour
 {
-  public Actor PlayerActor;
-  public Player Player;
   public int ElementNumber;
   public Sprite EnabledSprite;
   public Sprite DisabledSprite;
   public Image CurrentSprite;
   public bool IsHeart;
+
+  Player Player;
+  Actor PlayerActor;
   bool activeElement;
+
+  void Start()
+  {
+    GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+    Player = playerGO.GetComponent<Player>();
+    PlayerActor = playerGO.GetComponent<Actor>();
+  }
 
 	// Update is called once per frame
 	void Update ()
