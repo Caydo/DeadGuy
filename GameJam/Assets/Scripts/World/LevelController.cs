@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 
 public class LevelController : MonoBehaviour 
 {
   public ObjectSpawner[] ObjectSpawnPairs;
-	// Use this for initialization
-	void Start () 
-  {
-	
-	}
+  public InteractableObject[] RequiredInteractions;
+  public bool LevelComplete = false;
 	
 	// Update is called once per frame
 	void Update () 
@@ -21,6 +19,11 @@ public class LevelController : MonoBehaviour
         spawn.Spawner.Spawn();
       }
     }
+
+    if(RequiredInteractions.All(ri => ri.Used))
+    {
+      LevelComplete = true;
+    }
 	}
 
   [Serializable]
@@ -28,5 +31,6 @@ public class LevelController : MonoBehaviour
   {
     public InteractableObject Interactable;
     public EnemySpawner Spawner;
+    public bool Required;
   }
 }

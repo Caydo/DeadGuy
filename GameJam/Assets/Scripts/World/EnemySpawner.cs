@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour {
   int inPlay = 0;
   int spawned = 0;
   bool spawning = false;
+  readonly List<Actor> spawnedEnemies = new List<Actor>();
 
   public void Spawn()
   {
@@ -24,6 +26,7 @@ public class EnemySpawner : MonoBehaviour {
       foreach (var enemy in Enemies)
       {
         enemy.gameObject.SetActive(true);
+        spawnedEnemies.Add(enemy);
       }
     }
     else
@@ -35,12 +38,13 @@ public class EnemySpawner : MonoBehaviour {
   void Update()
   {
     //clean up enemies
-    foreach(var enemy in Enemies)
+    for (int i = spawnedEnemies.Count; i >= 0; --i)
     {
-      if(enemy.IsDead())
+      if (spawnedEnemies[i].IsDead())
       {
         ++dead;
         --inPlay;
+        spawnedEnemies.RemoveAt(i);
       }
     }
     if (spawning)
@@ -50,17 +54,22 @@ public class EnemySpawner : MonoBehaviour {
         if (inPlay < MaxInPlay)
         {
           var enemy = getNextEnemy();
+          enemy.gameObject.SetActive(true);
         }
       }
     }
 
     if (dead == Enemies.Length)
+    {
       gameObject.SetActive(false);
+      spawning = false;
+    }
   }
 
   private Actor getNextEnemy()
   {
     var retVal = Enemies[spawned];
+    spawnedEnemies.Add(retVal);
     ++spawned;
     ++inPlay;
     return retVal;
