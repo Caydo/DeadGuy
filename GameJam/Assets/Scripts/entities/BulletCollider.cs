@@ -11,8 +11,11 @@ public class BulletCollider : MonoBehaviour
     if (objectThatCollided.gameObject.tag == EnemyTag)
     {
       Actor enemyActor = objectThatCollided.gameObject.GetComponent<Actor>();
-      int attackDamage = (SourceActor.Attack - enemyActor.Defense);
-      enemyActor.HP -= (attackDamage > 0) ? attackDamage : 0;
+      if (enemyActor != SourceActor)
+      {
+        int attackDamage = (SourceActor.Attack - enemyActor.Defense);
+        enemyActor.HP -= (attackDamage > 0) ? attackDamage : 0;
+      }
     }
   }
 }
