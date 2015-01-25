@@ -23,6 +23,6 @@ public class Charge : MonoBehaviour {
 			ai.DoSomethingRandom();
 		}
         Vector3 towards = player.position - transform.position;
-        ai.rigidbody.AddForce(towards.normalized * speed);
+        ai.actor.rigidbody.AddForce(towards.normalized * speed);
 	}
 }

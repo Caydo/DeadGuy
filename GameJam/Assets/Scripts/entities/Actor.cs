@@ -14,4 +14,19 @@ public class Actor : MonoBehaviour
   {
     return HP <= 0;
   }
+
+  void Update()
+  {
+    if(HP == 0)
+    {
+      if(IsPlayer)
+      {
+        Application.LoadLevel("GameOver");
+      }
+      else
+      {
+        Destroy(gameObject);
+      }
+    }
+  }
 }

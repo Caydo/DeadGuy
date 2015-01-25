@@ -30,11 +30,13 @@ public class LevelController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
   {
+    Exit = null;
     foreach (var exit in exits)
     {
       if(exit.Exiting)
       {
         Exit = exit;
+        break;
       }
     }
     foreach (var spawn in ObjectSpawnPairs)

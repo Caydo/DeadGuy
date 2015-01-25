@@ -23,6 +23,6 @@ public class Strafe : MonoBehaviour {
 			ai.DoSomethingRandom();
 		}
         Vector3 towards = player.position - transform.position;
-        ai.rigidbody.AddForce(Vector3.Cross(towards, Vector3.up).normalized * speed);
+        ai.actor.rigidbody.AddForce(Vector3.Cross(towards, Vector3.up).normalized * speed);
 	}
 }

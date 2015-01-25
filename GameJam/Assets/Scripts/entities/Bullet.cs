@@ -46,6 +46,8 @@ public class Bullet : MonoBehaviour
     bulletCollider.SourceActor = SourceActor;
     bulletCollider.EnemyTag = (SourceActor.IsPlayer) ? "Enemy" : "Player";
     Vector3 mousePositionInWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    mousePositionInWorldPoint.z = 0;
+    Vector3 objectPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
     Vector3 moveToPos = (mousePositionInWorldPoint - gameObject.transform.position).normalized;
     StartCoroutine(waitThenDestroy());
 
