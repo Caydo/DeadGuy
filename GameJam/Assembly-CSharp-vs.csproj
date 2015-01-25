@@ -58,6 +58,8 @@
      <Compile Include="Assets\Scripts\entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\entities\BulletCollider.cs" />
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
+     <Compile Include="Assets\Scripts\entities\HealthHUDElement.cs" />
+     <Compile Include="Assets\Scripts\entities\HorcruxHUD.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Attack.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Charge.cs" />
