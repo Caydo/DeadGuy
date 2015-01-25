@@ -11,6 +11,7 @@ public class Attack : MonoBehaviour {
     RandomAI ai;
     Transform player;
     bool melee = false;
+	float awakeTime;
     
     void Awake() {
         ai = transform.GetComponentInParent<RandomAI>();
@@ -19,25 +20,30 @@ public class Attack : MonoBehaviour {
     
     void OnEnable() {
         melee = Vector3.Distance(player.position, transform.position) < meleeRange;
-        StartCoroutine(NextAfterTimeout());
         StartCoroutine(RunAttacks());
-    }
-    
-    IEnumerator NextAfterTimeout() {
-        yield return new WaitForSeconds(duration);
-        ai.DoSomethingRandom();
+		awakeTime = Time.time;
     }
 
+	void Update() {
+		if (Time.time > awakeTime + duration) {
+			ai.DoSomethingRandom();
+		}
+	}
+    
     IEnumerator RunAttacks() {
         while (true) {
-            Vector3 bulletSpawnPosition = transform.position + (transform.position - player.position).normalized;
+            Vector3 bulletSpawnPosition = transform.position - (transform.position - player.position).normalized;
 
             Transform toSpawn = null;
             if (melee) {
-                ai.animator.SetBool("Melee", true);
+				if (ai.animator != null) {
+                	ai.animator.SetBool("Melee", true);
+				}
                 toSpawn = meleePrefab.transform;
             } else {
-                ai.animator.SetBool("Melee", true);
+				if (ai.animator != null) {
+                	ai.animator.SetBool("Melee", true);
+				}
                 toSpawn = rangedPrefab.transform;
             }
 

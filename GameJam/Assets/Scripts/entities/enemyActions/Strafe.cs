@@ -7,23 +7,22 @@ public class Strafe : MonoBehaviour {
 
 	RandomAI ai;
 	Transform player;
-	
+	float awakeTime;
+
 	void Awake() {
 		ai = transform.GetComponentInParent<RandomAI>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void OnEnable() {
-        StartCoroutine(NextAfterTimeout());
-    }
-
-	void Update() {
-        Vector3 towards = player.position - transform.position;
-        rigidbody.AddForce(Vector3.Cross(towards, Vector3.up).normalized * speed);
+		awakeTime = Time.time;
 	}
-
-    IEnumerator NextAfterTimeout() {
-        yield return new WaitForSeconds(duration);
-        ai.DoSomethingRandom();
-    }
+	
+	void Update() {
+		if (Time.time > awakeTime + duration) {
+			ai.DoSomethingRandom();
+		}
+        Vector3 towards = player.position - transform.position;
+        ai.rigidbody.AddForce(Vector3.Cross(towards, Vector3.up).normalized * speed);
+	}
 }

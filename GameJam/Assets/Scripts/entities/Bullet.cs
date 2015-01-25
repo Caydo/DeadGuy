@@ -7,14 +7,20 @@ public class Bullet : MonoBehaviour
   public float killTime;
   public Actor SourceActor;
   public GameObject BulletColliderGO;
+  public bool Done
+  {
+    get;
+    private set;
+  }
+
   BulletCollider bulletCollider;
 
   bool fired = false;
   float forceAmount = 100;
-  string EnemyTag = string.Empty;
 
 	void OnEnable()
   {
+    Done = false;
     if(!fired)
     {
       fired = true;
@@ -25,6 +31,7 @@ public class Bullet : MonoBehaviour
   IEnumerator waitThenDestroy()
   {
     yield return new WaitForSeconds(killTime);
+    Done = true;
     GameObject.Destroy(gameObject);
   }
 
