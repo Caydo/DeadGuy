@@ -1,23 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
   public int HorcruxCount;
   InteractableObject interactionObject;
-  public string DialogText;
+  public Text DialogText;
+  public float DialogDisplayTime = 3f;
+  Actor actor;
+
+  void Start()
+  {
+    actor = GetComponent<Actor>();
+  }
 
   void Update()
   {
     if(Input.GetButtonUp("Fire3"))
     {
-      Interact();
+      Debug.Log("Fire3 hit");
+      StartCoroutine(Interact());
     }
   }
 
   void OnTriggerEnter(Collider objectCollidedWith)
   {
-    interactionObject = objectCollidedWith.GetComponent<InteractableObject>();
+    var collided = objectCollidedWith.GetComponent<InteractableObject>();
+    if(collided)
+      interactionObject = collided;
+    
   }
 
   void OnTriggerExit(Collider objectCollidedWith)
@@ -25,12 +37,14 @@ public class Player : MonoBehaviour
     interactionObject = null;
   }
 
-  void Interact()
+  IEnumerator Interact()
   {
     if(interactionObject != null)
     {
-      DialogText = interactionObject.GetPhrase();
-      interactionObject.Used = true;
+      DialogText.text = interactionObject.Interact(actor);
+      yield return new WaitForSeconds(DialogDisplayTime);
+      DialogText.text = string.Empty;
     }
+    yield break;
   }
 }

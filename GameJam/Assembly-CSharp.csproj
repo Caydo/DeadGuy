@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\DeleteAfterTimeout.cs" />
      <Compile Include="Assets\Scripts\World\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\World\GameController.cs" />
      <Compile Include="Assets\Scripts\World\InteractableObject.cs" />
