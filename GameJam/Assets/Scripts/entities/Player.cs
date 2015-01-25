@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
       Debug.Log("Fire3 hit");
       StartCoroutine(Interact());
     }
+    if(Input.GetKeyUp(KeyCode.Escape))
+    {
+      Application.LoadLevel("MainMenu");
+    }
   }
 
   void OnTriggerEnter(Collider objectCollidedWith)
