@@ -9,9 +9,17 @@ public class LevelController : MonoBehaviour
 {
   public ObjectSpawner[] ObjectSpawnPairs;
   public bool LevelComplete = false;
-  public bool Exiting = false;
+  public LevelExit Exit;
   public int ExitTo;
   List<LevelExit> exits;
+
+  public bool Exiting
+  {
+    get
+    {
+      return Exit != null && Exit.Exiting;
+    }
+  }
 
   void Start()
   {
@@ -26,8 +34,7 @@ public class LevelController : MonoBehaviour
     {
       if(exit.Exiting)
       {
-        Exiting = true;
-        ExitTo = exit.ExitLevel;
+        Exit = exit;
       }
     }
     foreach (var spawn in ObjectSpawnPairs)

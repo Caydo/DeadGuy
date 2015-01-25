@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
 
   public List<LevelController> levels;
   public int CurrentLevel = 0;
+  public GameObject Player;
   bool changeLevel = false;
 	
 	// Update is called once per frame
@@ -13,13 +14,16 @@ public class GameController : MonoBehaviour {
   {
 	  if(levels[CurrentLevel].LevelComplete && levels[CurrentLevel].Exiting)
     {
+      var exit = levels[CurrentLevel].Exit;
+      levels[CurrentLevel].Exit = null;
       levels[CurrentLevel].gameObject.SetActive(false);
-      CurrentLevel = levels[CurrentLevel].ExitTo;
+      CurrentLevel = exit.ExitLevel;
       levels[CurrentLevel].gameObject.SetActive(true);
 
       Transform transform = levels[CurrentLevel].transform;
       Vector3 pos = new Vector3(transform.position.x, transform.position.y, -10);
       Camera.main.camera.transform.position = pos;
+      Player.transform.position = exit.SpawnPoint.transform.position;
     }
 	}
 
