@@ -3,10 +3,12 @@ using System.Collections;
 
 public class ActorAttack : MonoBehaviour
 {
-  public Bullet AttackOnePrefab;
-  public Bullet AttackTwoPrefab;
+  public Bullet AttackOneBullet;
+  public Bullet AttackTwoBullet;
+
   public Transform AttackOnePosition;
   public Transform AttackTwoPosition;
+  public float MeleeAttackDistance;
 
   bool canFireAttack1 = true;
   bool canFireAttack2 = true;
@@ -15,15 +17,44 @@ public class ActorAttack : MonoBehaviour
   {
     if(Input.GetButtonDown("Fire1") && canFireAttack1)
     {
-      Bullet attackBullet = GameObject.Instantiate(AttackOnePrefab, AttackOnePosition.position, Quaternion.identity) as Bullet;
+      canFireAttack1 = false;
+      Bullet attackBullet;
+      if(AttackOneBullet.IsRanged)
+      {
+        attackBullet = GameObject.Instantiate(AttackOneBullet, gameObject.transform.position, gameObject.transform.rotation) as Bullet;
+      }
+      else
+      {
+        Vector3 mousePositionInWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerPositionInWorldPoint = Camera.main.ScreenToWorldPoint(gameObject.transform.position);
+        Vector3 moveToPos = new Vector3(mousePositionInWorldPoint.x, mousePositionInWorldPoint.y, playerPositionInWorldPoint.z);
+        moveToPos = Vector3.MoveTowards(gameObject.transform.position, moveToPos, MeleeAttackDistance);
+
+        attackBullet = GameObject.Instantiate(AttackOneBullet, moveToPos, Quaternion.identity) as Bullet;
+      }
+
       attackBullet.SourceActor = GetComponent<Actor>();
       StartCoroutine(waitToFireAgain(true));
     }
 
     if(Input.GetButtonDown("Fire2") && canFireAttack2)
     {
-      // attack two
-      Bullet attackBullet = GameObject.Instantiate(AttackTwoPrefab, AttackTwoPosition.position, Quaternion.identity) as Bullet;
+      canFireAttack2 = false;
+      Bullet attackBullet;
+      if(AttackTwoBullet.IsRanged)
+      {
+        attackBullet = GameObject.Instantiate(AttackTwoBullet, gameObject.transform.position, gameObject.transform.rotation) as Bullet;
+      }
+      else
+      {
+        Vector3 mousePositionInWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerPositionInWorldPoint = Camera.main.ScreenToWorldPoint(gameObject.transform.position);
+        Vector3 moveToPos = new Vector3(mousePositionInWorldPoint.x, mousePositionInWorldPoint.y, playerPositionInWorldPoint.z);
+        moveToPos = Vector3.MoveTowards(gameObject.transform.position, moveToPos, MeleeAttackDistance);
+
+        attackBullet = GameObject.Instantiate(AttackTwoBullet, moveToPos, Quaternion.identity) as Bullet;
+      }
+      
       attackBullet.SourceActor = GetComponent<Actor>();
       StartCoroutine(waitToFireAgain(false));
     }
@@ -34,13 +65,11 @@ public class ActorAttack : MonoBehaviour
     Actor actor = GetComponent<Actor>();
     if(isAttackOne)
     {
-      canFireAttack1 = false;
       yield return new WaitForSeconds(actor.MeleeAttackSpeed);
       canFireAttack1 = true;
     }
     else
     {
-      canFireAttack2 = false;
       yield return new WaitForSeconds(actor.RangedAttackSpeed);
       canFireAttack2 = true;
     }
