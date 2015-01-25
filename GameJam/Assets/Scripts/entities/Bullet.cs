@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
   BulletCollider bulletCollider;
 
   bool fired = false;
-  float forceAmount = 100;
+  public float forceAmount;
 
 	void OnEnable()
   {
@@ -45,13 +45,17 @@ public class Bullet : MonoBehaviour
     bulletCollider = BulletColliderGO.GetComponent<BulletCollider>();
     bulletCollider.SourceActor = SourceActor;
     bulletCollider.EnemyTag = (SourceActor.IsPlayer) ? "Enemy" : "Player";
-
+    Vector3 mousePositionInWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    Vector3 moveToPos = (mousePositionInWorldPoint - gameObject.transform.position).normalized;
     StartCoroutine(waitThenDestroy());
 
-    if (IsRanged)
+    if(IsRanged)
     {
-      Vector3 movementForce = new Vector3(0, forceAmount, 0);
-      rigidbody.AddForce(movementForce);
+      rigidbody.AddForce(moveToPos * forceAmount);
+    }
+    else
+    {
+      
     }
   }
 }

@@ -22,4 +22,9 @@ public class GameController : MonoBehaviour {
       Camera.main.camera.transform.position = pos;
     }
 	}
+
+  public void WinGame()
+  {
+    // WIN HERE!!! ZOMG YOU WON GO YOU, A WINNER IS YOU!!
+  }
 }
