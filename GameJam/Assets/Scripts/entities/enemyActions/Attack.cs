@@ -1,49 +1,59 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Attack : MonoBehaviour {
+public class Attack : MonoBehaviour
+{
     public float secondsBetweenAttacks = 0.5f;
     public float duration = 3.0f;
     public float meleeRange = 2.0f;
     public Bullet meleePrefab;
     public Bullet rangedPrefab;
-    
+
     RandomAI ai;
     Transform player;
     bool melee = false;
-	float awakeTime;
-    
-    void Awake() {
+    float awakeTime;
+
+    void Awake()
+    {
         ai = transform.GetComponentInParent<RandomAI>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-    
-    void OnEnable() {
+
+    void OnEnable()
+    {
         melee = Vector3.Distance(player.position, transform.position) < meleeRange;
         StartCoroutine(RunAttacks());
-		awakeTime = Time.time;
+        awakeTime = Time.time;
+        ai.animator.attacking = true;
     }
 
-	void Update() {
-		if (Time.time > awakeTime + duration) {
-			ai.DoSomethingRandom();
-		}
-	}
-    
-    IEnumerator RunAttacks() {
-        while (true) {
+    void OnDisable()
+    {
+        ai.animator.attacking = false;
+    }
+
+    void Update()
+    {
+        if (Time.time > awakeTime + duration)
+        {
+            ai.DoSomethingRandom();
+        }
+    }
+
+    IEnumerator RunAttacks()
+    {
+        while (true)
+        {
             Vector3 bulletSpawnPosition = transform.position - (transform.position - player.position).normalized;
 
             Transform toSpawn = null;
-            if (melee) {
-				if (ai.animator != null) {
-                	ai.animator.SetBool("Melee", true);
-				}
+            if (melee)
+            {
                 toSpawn = meleePrefab.transform;
-            } else {
-				if (ai.animator != null) {
-                	ai.animator.SetBool("Melee", true);
-				}
+            }
+            else
+            {
                 toSpawn = rangedPrefab.transform;
             }
 

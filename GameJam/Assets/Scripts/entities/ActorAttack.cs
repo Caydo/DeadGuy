@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using AssemblyCSharp;
 
 public class ActorAttack : MonoBehaviour
 {
+  public ActionAnimator animator;
+
   public Bullet AttackOneBullet;
   public Bullet AttackTwoBullet;
 
@@ -13,8 +16,13 @@ public class ActorAttack : MonoBehaviour
   bool canFireAttack1 = true;
   bool canFireAttack2 = true;
 
+  float attackTimeout = 0.0f;
+
   void Update()
   {
+      attackTimeout -= Time.deltaTime;
+      animator.attacking = attackTimeout > 0.0f;
+
     if(Input.GetButtonDown("Fire1") && canFireAttack1)
     {
       canFireAttack1 = false;
@@ -33,6 +41,7 @@ public class ActorAttack : MonoBehaviour
       }
 
       attackBullet.SourceActor = GetComponent<Actor>();
+      attackTimeout = 1.0f;
       StartCoroutine(waitToFireAgain(true));
     }
 
@@ -54,6 +63,7 @@ public class ActorAttack : MonoBehaviour
       }
       
       attackBullet.SourceActor = GetComponent<Actor>();
+      attackTimeout = 1.0f;
       StartCoroutine(waitToFireAgain(false));
     }
   }
