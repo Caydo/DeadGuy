@@ -5,6 +5,6 @@ public class PlayGameButton : MenuButton
 {
   protected override void doAction()
   {
-    Application.LoadLevel("Level");
+    Application.LoadLevel("StoryIntro");
   }
 }
