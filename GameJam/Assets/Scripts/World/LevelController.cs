@@ -24,7 +24,6 @@ public class LevelController : MonoBehaviour
   void Start()
   {
     exits = GetComponentsInChildren<LevelExit>().ToList();
-    
   }
 
 	// Update is called once per frame

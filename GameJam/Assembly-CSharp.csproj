@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\World\InteractableObject.cs" />
      <Compile Include="Assets\Scripts\World\LevelController.cs" />
      <Compile Include="Assets\Scripts\World\LevelExit.cs" />
+     <Compile Include="Assets\Scripts\entities\ActionAnimator.cs" />
      <Compile Include="Assets\Scripts\entities\Actor.cs" />
      <Compile Include="Assets\Scripts\entities\ActorAttack.cs" />
      <Compile Include="Assets\Scripts\entities\ActorInput.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Scripts\entities\FinalBoss.cs" />
      <Compile Include="Assets\Scripts\entities\HUDElement.cs" />
      <Compile Include="Assets\Scripts\entities\HorcruxHUD.cs" />
+     <Compile Include="Assets\Scripts\entities\OwlRotator.cs" />
      <Compile Include="Assets\Scripts\entities\Player.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Attack.cs" />
      <Compile Include="Assets\Scripts\entities\enemyActions\Charge.cs" />
