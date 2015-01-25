@@ -34,7 +34,12 @@ public class ActorMovement : MonoBehaviour
     {
       Vector3 movementForce = new Vector3(0, -forceAmount, 0);
       rigidbody.AddForce(movementForce);
-    }	
+    }
+
+    if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+    {
+      rigidbody.velocity = Vector3.zero; ;
+    }
    
 	if(rigidbody.velocity != Vector3.zero)
 	{
