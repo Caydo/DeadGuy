@@ -18,10 +18,19 @@ namespace AssemblyCSharp
             anim = GetComponent<Animator>();
         }
 
+		Vector3 positionLastFrame;
+
         void Update()
         {
+			bool walkThisFrame = walking;
+			if (transform.position != positionLastFrame)
+			{
+				positionLastFrame = transform.position;
+				walkThisFrame = true;
+			}
+
             anim.SetBool("Attacking", attacking);
-            anim.SetBool("Walking", walking);
+            anim.SetBool("Walking", walkThisFrame);
             anim.SetBool("Dead", dead);
 
             if (transform.position.x > oldPosition.x)
